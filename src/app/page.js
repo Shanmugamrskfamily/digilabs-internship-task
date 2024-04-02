@@ -45,7 +45,7 @@ export default function Home() {
 
       <div className="m-2 mt-12">
         <div className="relative">
-          <img src="/illustration.png" alt="waves around bell" className="m-auto relative" />
+          <img src="/Illustration.png" alt="waves around bell" className="m-auto relative" />
           <img src="/ri_notification-2-line.png" alt="Notification" className="m-auto absolute inset-0" />
         </div>
       </div>
