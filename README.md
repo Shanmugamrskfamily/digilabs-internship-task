@@ -14,7 +14,7 @@ This project is a web application developed using Next.js, a React framework for
 
 You can preview the project [here](https://digilabs-internship-task-shanmugam.vercel.app/).
 
-<img src='./public/Screenshot.jpg'/>
+<img width='620px' height='287px' src='./public/Screenshot.jpg'/>
 
 ## Technologies Used
 
