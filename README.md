@@ -20,7 +20,6 @@ You can preview the project [here](https://digilabs-internship-task-shanmugam.ve
 
 - Next.js
 - React
-- react-toastify
 - react-modal
 - Tailwind CSS
 
