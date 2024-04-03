@@ -1,35 +1,30 @@
 'use client'
-import { useState } from 'react';
-import NotificationModal from "./NotificationModal";
-import Toast from "./Toast";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  const handleSendNotification = async () => {
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+    const permission = await Notification.requestPermission();
+    
+    if (window.Notification && permission === 'granted') {
+      let notificationOptions = {
+        body: 'Some Notification information',
+        icon: '/notification-icon.png'
+      };
+      let notif = new Notification('My New Notification', notificationOptions);
 
-  const handleAllow = () => {
-    closeModal();
-    Toast.success('Notifications allowed!');
-  };
-
-  const handleDeny = () => {
-    closeModal();
-    Toast.error('Notifications denied!');
+      notif.onclick = () => {
+        console.log('Notification clicked');
+      };
+    } else {
+      console.log('Notification permission not granted.');
+    }
   };
 
   return (
-    
     <div className="text-4xl font-bold text-white">
-      <ToastContainer/>
       <div className="flex flex-row justify-between gap-6 m-3">
         <div>
           <img src="/basic.png" alt="Time and Location" />
@@ -50,11 +45,10 @@ export default function Home() {
         </div>
       </div>
       <div className="flex items-center justify-center mt-16 mb-6 ml-10 mr-10">
-        <button onClick={openModal} className="relative w-[327px] h-[42px] rounded-md p-0 shadow-md overflow-hidden bg-gradient-to-r from-transparent via-red-600 to-transparent font-inter font-semibold text-[16px] text-center text-white small-screen  md:w-[280px] md:h-[38px] lg:w-[300px] lg:h-[38px]">
+        <button onClick={handleSendNotification} className="relative w-[327px] h-[42px] rounded-md p-0 shadow-md overflow-hidden bg-gradient-to-r from-transparent via-red-600 to-transparent font-inter font-semibold text-[16px] text-center text-white small-screen  md:w-[280px] md:h-[38px] lg:w-[300px] lg:h-[38px]">
           <span className="absolute inset-0 z-[-1] bg-gradient-to-r from-transparent via-red-600 to-transparent border border-solid border-[1.4px] rounded-md"></span>
           <span className="text-sm">Send Notification</span>
         </button>
-        <NotificationModal isOpen={modalIsOpen} onRequestClose={closeModal} onAllow={handleAllow} onDeny={handleDeny} />
       </div>
     </div>
   );
