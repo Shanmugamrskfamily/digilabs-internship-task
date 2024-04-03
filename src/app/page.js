@@ -5,7 +5,7 @@ export default function Home() {
   
 
   const handleSendNotification = async () => {
-
+    
     const permission = await Notification.requestPermission();
     
     if (window.Notification && permission === 'granted') {
