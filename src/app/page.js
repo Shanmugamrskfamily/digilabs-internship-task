@@ -6,10 +6,10 @@ export default function Home() {
   // Function to handle sending notifications
   const handleSendNotification = async () => {
     // Request permission for notifications
-    const permission = await Notification.requestPermission();
+    let permission = await Notification.requestPermission();
     
     // Check if the browser supports notifications and permission is granted
-    if (window.Notification && permission === 'granted') {
+    if (permission === 'granted') {
       // Notification options
       let notificationOptions = {
         body: 'Some Notification information',
@@ -23,8 +23,7 @@ export default function Home() {
         console.log('Notification clicked');
       };
     } else {
-      // Notify if permission is denied
-      alert('Notification Permission Denied!');
+      alert('Notification Permission Denied! kindly Allow Permission to send Notification.');
       console.log('Notification permission not granted.');
     }
   };
